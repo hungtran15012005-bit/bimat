@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Exo+2:ital,wght@0,300;0,400;0,500;0,700;0,900;1,700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Exo 2", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Rajdhani", sans-serif;
+}
+
+/* ==========================================================================
+   GTA VI Landing Page - Cyberpunk Neon Remaster
+   Theme: Dark Futuristic with Electric Blue & Amber Accents
+   ========================================================================== */
+
+:root {
+  /* Design System Colors */
+  --bg-color: #020408;
+  --text-white: #ffffff;
+  --text-gray: rgba(200, 220, 255, 0.7);
+  --text-muted: rgba(180, 210, 255, 0.45);
+  --border-light: rgba(0, 180, 255, 0.15);
+  --border-subtle: rgba(0, 180, 255, 0.06);
+  --glass-bg: rgba(4, 12, 24, 0.85);
+  
+  /* Highlight Accents */
+  --electric-blue: #00b8ff;
+  --neon-amber: #ffb800;
+  --cyber-green: #00ff9d;
+  --ice-white: #e0f4ff;
+  --deep-navy: #030d1a;
+
+  /* Typography */
+  --font-primary: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-display: 'Rajdhani', sans-serif;
+}
+
+/* Custom scroll bar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #020408;
+}
+::-webkit-scrollbar-thumb {
+  background: #00284a;
+  border-radius: 4px;
+  border: 2px solid #020408;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #00b8ff55;
+}
+
+/* Cinematic overlays */
+.vignette-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 25%, rgba(2,4,8,0.88) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Scanline texture overlay for cyberpunk effect */
+.noise-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: screen;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 184, 255, 0.03) 2px,
+      rgba(0, 184, 255, 0.03) 4px
+    );
+  z-index: 2;
+}
+
+/* Neon glow border utility */
+.neon-border {
+  border: 1px solid rgba(0, 184, 255, 0.3);
+  box-shadow: 0 0 20px rgba(0, 184, 255, 0.08), inset 0 0 20px rgba(0, 184, 255, 0.04);
+}
+
+/* Modern widescreen card */
+.cover-art-container-new {
+  border: 4px solid #001a33;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 60px rgba(0, 184, 255, 0.2), 0 35px 80px rgba(0,0,0,0.95);
+  background-color: #000000;
+  width: 440px;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cover-art-container-new:hover {
+  transform: translateY(-5px) scale(1.01);
+}
+
+.cover-art-container-new .cover-art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Cyber text gradient */
+.text-cyber-gradient {
+  background: linear-gradient(135deg, #00b8ff 0%, #0070ff 40%, #00e0ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Amber text gradient */
+.text-amber-gradient {
+  background: linear-gradient(to right, #ffb800 0%, #ff7a00 60%, #ffd000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Audio visualizer bar animation */
+@keyframes pulse-bar {
+  0%, 100% {
+    height: 3px;
+    opacity: 0.4;
+  }
+  50% {
+    height: 18px;
+    opacity: 1;
+  }
+}
+
+.bar {
+  animation: pulse-bar 0.7s ease-in-out infinite;
+}
+
+.bar-1 { animation-delay: 0.05s; }
+.bar-2 { animation-delay: 0.35s; }
+.bar-3 { animation-delay: 0.15s; }
+.bar-4 { animation-delay: 0.55s; }
+.bar-5 { animation-delay: 0.25s; }
+
+/* Pulse animation for hotspot indicators */
+@keyframes cyber-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 184, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(0, 184, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 184, 255, 0);
+  }
+}
+
+.hotspot-pulse {
+  animation: cyber-pulse 2s infinite;
+}
+
+/* Glitch text effect */
+@keyframes glitch {
+  0%, 100% { clip-path: none; transform: none; }
+  2% { clip-path: polygon(0 20%, 100% 20%, 100% 25%, 0 25%); transform: translateX(-2px); }
+  4% { clip-path: none; transform: none; }
+  6% { clip-path: polygon(0 60%, 100% 60%, 100% 65%, 0 65%); transform: translateX(2px); }
+  8% { clip-path: none; transform: none; }
+}
+
+.glitch-text {
+  animation: glitch 8s infinite;
+}
+
+/* Neon scan line sweep */
+@keyframes scan-sweep {
+  0% { transform: translateY(-100%); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Card hover lift */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 184, 255, 0.15);
+}
