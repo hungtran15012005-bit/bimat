@@ -1,6 +1,0 @@
-{
-  "name": "GTA VI Official Website Clone",
-  "description": "An interactive, highly polished, fully responsive clone of the official Grand Theft Auto VI (GTA 6) website with cinematic sections, navigation, and mobile support.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
