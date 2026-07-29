@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<canvas id="canvas" width="500" height="300" style="border:1px solid black"></canvas>
+
+<script>
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let angle = 0;
+
+function drawCharacter() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.beginPath();
+    ctx.arc(250, 70, 20, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillRect(245, 90, 10, 60);
+
+    ctx.beginPath();
+    ctx.moveTo(250, 100);
+    ctx.lineTo(220, 120);
+    ctx.stroke();
+
+    let handX = 250 + Math.cos(angle) * 30;
+    let handY = 100 - Math.sin(angle) * 20;
+
+    ctx.beginPath();
+    ctx.moveTo(250, 100);
+    ctx.lineTo(handX, handY);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(250, 150);
+    ctx.lineTo(230, 190);
+
+    ctx.moveTo(250, 150);
+    ctx.lineTo(270, 190);
+    ctx.stroke();
+}
+
+function animate() {
+    angle += 0.1;      
+    drawCharacter();   
+    requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
