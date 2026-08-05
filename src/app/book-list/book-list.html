@@ -1,0 +1,18 @@
+<section class="search-section">
+    <label for="search-input">Tìm kiếm sách:</label>
+    <input id="search-input" type="search" placeholder="Nhập tựa sách hoặc tác giả..." [ngModel]="searchTerm()"
+        (ngModelChange)="searchTerm.set($event)" />
+</section>
+
+<ul class="book-list">
+    @for (book of filteredBooks(); track book.id) {
+    <li>
+        <a [routerLink]="['/books', book.id]">
+            <span class="book-title">{{ book.title }}</span> -
+            <span class="book-author">{{ book.author }}</span>
+        </a>
+    </li>
+    } @empty {
+    <p class="empty-message">Không tìm thấy cuốn sách nào.</p>
+    }
+</ul>

@@ -1,0 +1,60 @@
+@if (book(); as currentBook) {
+<div class="book-detail-card">
+    <div class="back-link">
+        <a routerLink="/books">← Quay lại danh sách</a>
+    </div>
+
+    <div class="book-header">
+        <img [src]="currentBook.coverUrl" [alt]="'Bìa sách ' + currentBook.title" width="200" height="300"
+            class="cover-image" />
+        <div class="book-info">
+            <h1 class="title">
+                {{ currentBook.title }}
+
+                <button type="button" class="favorite-btn" (click)="toggleFavorite(currentBook.id)"
+                    [attr.aria-label]="currentBook.isFavorite ? 'Bỏ yêu thích' : 'Yêu thích'">
+                    <span aria-hidden="true">{{ currentBook.isFavorite ? '★' : '☆' }}</span>
+                    <span class="visually-hidden">
+                        {{ currentBook.isFavorite ? 'Đã yêu thích' : 'Chưa yêu thích' }}
+                    </span>
+                </button>
+            </h1>
+            <p class="author">{{ currentBook.author }}</p>
+            <p class="description">{{ currentBook.description }}</p>
+
+            <<div class="speed-control">
+                <span>Tốc độ đọc:</span>
+                <button type="button" (click)="decreaseSpeed()" [disabled]="readingSpeed() <= 10"
+                    [attr.aria-label]="'Giảm tốc độ đọc'">
+                    -
+                </button>
+                <span class="speed-value">{{ readingSpeed() }}</span>
+                <button type="button" (click)="increaseSpeed()" [attr.aria-label]="'Tăng tốc độ đọc'">
+                    +
+                </button>
+                <span>trang/giờ</span>
+        </div>
+    </div>
+</div>
+
+<hr class="divider" />
+
+<ul class="chapter-list">
+    @for (chapter of chapterEstimates(); track chapter.title) {
+    <li class="chapter-item">
+        <span class="chapter-title">{{ chapter.title }}</span>
+        <span class="chapter-meta">
+            {{ chapter.pages }} tr &nbsp; {{ chapter.minutes }} phút
+        </span>
+    </li>
+    } @empty {
+    <li>Sách này chưa có chương nào.</li>
+    }
+</ul>
+</div>
+} @else {
+<div class="not-found-container">
+    <p>Không tìm thấy cuốn sách này.</p>
+    <a routerLink="/books">← Quay lại danh sách</a>
+</div>
+}
